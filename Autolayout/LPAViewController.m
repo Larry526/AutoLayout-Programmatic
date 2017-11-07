@@ -18,6 +18,9 @@
 @property (nonatomic, weak) NSLayoutConstraint *framingViewHeightConstraint;
 @property (nonatomic, weak) NSLayoutConstraint *framingViewWidthConstraint;
 
+@property (nonatomic) CGRect blueInitialRect;
+
+
 @end
 
 @implementation LPAViewController
@@ -52,7 +55,7 @@
     framingView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:framingView];
     self.framingView = framingView;
-    
+
     NSString *buttonsHorizontalConstraintsFormat = @"|[squareButton(==portraitButton)][portraitButton(==landscapeButton)][landscapeButton]|";
     NSArray *buttonsHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:buttonsHorizontalConstraintsFormat
                                                                    options:NSLayoutFormatAlignAllCenterY
@@ -107,6 +110,27 @@
 
     
     // Set up your views and constraints here
+    
+    //Purple Box
+    
+    UIView *purpleBoxView = [[UIView alloc]initWithFrame:CGRectZero];
+    purpleBoxView.translatesAutoresizingMaskIntoConstraints = NO;
+    purpleBoxView.backgroundColor = [UIColor purpleColor];
+    [framingView addSubview:purpleBoxView];
+    
+    [NSLayoutConstraint constraintWithItem:purpleBoxView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.framingView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-20].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:purpleBoxView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.framingView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-20].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:purpleBoxView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:50].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:purpleBoxView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.framingView attribute:NSLayoutAttributeWidth multiplier:(305.0/500.0) constant:0].active = YES;
+    
+    //Rex Box
+    
+    UIView *redBoxView = [[UIView alloc]initWithFrame:CGRectZero];
+    redBoxView.translatesAutoresizingMaskIntoConstraints = NO;
+    
     
     
 }
